@@ -1,7 +1,6 @@
+import rs = require('readline-sync');
 import { Bokoblin, Link } from './objets';
 import CharStats from './instances';
-
-const rs = require('readline-sync');
 
 export default function combat(enemy : CharStats, hero: CharStats) {
   console.log(`${enemy.name} has ${enemy.hp} hp.`);
