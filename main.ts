@@ -1,5 +1,6 @@
+import { Console } from 'console';
 import combat from './fonctions';
-import { Bokoblin, Link } from './objets';
+import { Bokoblin, Ganon, Link } from './objets';
 
 const readline = require('readline-sync');
 
@@ -35,14 +36,49 @@ export default function test() {
 
 function start() {
   for (let i = 0; i < 10; i += 1) {
-    console.log(`============ FIGHT ${i + 1} ============`);
-    combat(Bokoblin, Link);
-    console.log(`\nGG !\nYou complete the FIGHT ${i + 1}\n`);
-    console.log('============ END OF FIGTH ============');
-    const next = readline.keyInYN('Do you want to go to the next floor?');
-    if (next === false) {
-      console.log('No room for weakness here');
-      return;
+    if (i === 9) {
+      console.log(`
+
+                               ,▓█▓╬╣╬╬╣╬╬╣╬╣╬╬╬╬╬╬╬╬╬╬▄▌
+                             ▓é╬╬▓╠╣╬╣╬╬▓╬╬╟╬╬╟▓╬╬▓╬█╬╬▓█▓
+                            ▓╬▓╟╩╠╬╟▓╬▓▓▓╬╬▓╬█▓▓█╬▓╬╬╬╬╬╣╬▌┌⌐
+                         ]▄╬▓▓╫▒╣╬▓█▓█╬╫╬╟█╬╫╬╬╬█╬╟╬╟╬╬█╬╣▓╬Γ
+                         ╫▓╬╬▓█▓╬▓╬░╠╠╠╠╠╠╠╬╣▒╫╣▒╣╬╣▓╬╬╬╣╣▒█▓▄
+                        ▄╬╬╬▄█▌╫▓▒╠╠╩▒▒░╚╠╣▒▓█▓▓╣╣▓╬╣▓╬▓╬╬╣██▌
+                      ,▓▓╬▒╫█▓▓█▓▓▒░░░░░░╫╬▓▓╬╣╣▓▀█▓▒╬█╬╬╟██╝█,
+                      █╬▓╬█▒'  │█╬╬╢╫░░░▐╣▓╬╣╣▓▀░╠█▒╣▓▓╬▓▓▓▓██╙▓╣╓
+                     ▐██╬▓▒▒░░≥▄█╬╬██▀▓▓#█╬╣╣█▓▀▀╬██╬▓╬▓█╬██▓█▒█╬███████▓µ
+                    ╒▓╬▓█╬▓▒▒▒▓╬▓▓╬╙░░░Q▐╬╬█╬╬░░░╩╠██╣██╣█████▒▓╬▓████████▄
+                    ▓█╬╬█╟█▓,╠█╬Γ▓▒░░░.▓╬╣█▓▓░░░░░╬▓▓██▓█████▒█╬█╬╬█████▓█▓▓
+                   ▓╬▓╬▓▓▀╫▓╠█░╣▌▓░░░;╫╬▓▓██▒░▒▒▒▒╬╬▌▓█╬██╬▓██╣████▓████╟╬╬╬▓
+                   ▀▓╬╬▓╬▒▐█╫Γ╟╣╬▒░¡░▓▓▓▓╩█░░░░▒▒╠╬╣▒╣█╬╬▓╬██╬█▓╬█▓╣██▓▓▒╠╠╬╬▓
+                    ╙██╬▓▒╠╬▒j▓╬╬▒╓▓██▓╠ ╓▒░░░░▒╠╣▓▌╠╣█╬╬╣█▓╬▓█╬▓▓███╬▓▒╠╠╠╠╬╬▓▄▄,
+                      ▄▓█▓██▓▒▀█████▓▄▄▄▓▒░░░░▒╢▓█▌▒╫███╬▓▓╬█▓▓▓███▓█╬╬╬╬╬╬╬╬╬╬▓╬▓██
+                    ╓██▓▓▓█████╩▀╟█╬╬╬╬╙╙│░░▄╣▓▓▓╬▒Å▓█╬▓▓█▓╬▓▓▓█████▓█▓╣▓▓╬╬╬╬╬█╬▓██
+                   ▄███╬▓▒▓███▓░▒╫▓╣╬╬▀╪░░╙╫█▓█╬╠╣▒╫█▓▓╬▓╬╬╣╣█╬███████▀╬▓╣╣╬╬╬╬▒╬▓▓▓
+                  ▓███████████▒▒╬╬╬╠╬▒╠▒▒╚▄▓▀█▒╚╠╬╬╬▓▓╬╣╬╬╬╣████████╬▓╬░▓█▓▓▓╣█╬╣▓▓▓
+                 ╓███████████▌░╠╬▒▄██▒▒▄▄▓▀░╦╫▒▒╬╬╬▓╬╬╬▓╬╬╣▓████████╬╬▌▒░▌████╬▓▓▓╬╬
+                ▄████████████░░╠╬███▀▀▀▀╠▄╣╬╬▒╣▓▓█╬╬╬╬╣▒╬╣▓▓█████████╬█▓╬████▓▓▓╬╬╬╬
+             ▄███████████████░▒▓████████▓╬╬▓▓▓╬██╬╬╬╠╬▓╠╬╣╬█████████████████▓▓▓▓▓╬╬╬
+           ▓████▓╣██████████▓▓█████████████╬╬███╬╬╬▒╢╬╬╬▓▓████████████████▓▓▓▓▓▓▓╬╬╬
+        ╓▓█████▓▓▓╬█████████████████████████████╬╬▒╠╣▓▓█▓▓███╬██████████▓╬▓▓▓▓▓▓╣╣╬╬\n`)
+      const next = readline.keyInYN('Do you want to fight the boss ?');
+      if (next === false) {
+        console.log('No room for weakness here');
+        return;
+      }
+      console.log('============ BOSS FIGHT  ============');
+      combat(Ganon, Link);
+    } else {
+      console.log(`============ FIGHT ${i + 1} ============`);
+      combat(Bokoblin, Link);
+      console.log(`\nGG !\nYou complete the FIGHT ${i + 1}\n`);
+      console.log('============ END OF FIGTH ============');
+      const next = readline.keyInYN('Do you want to go to the next floor?');
+      if (next === false) {
+        console.log('No room for weakness here');
+        return;
+      }
     }
   }
 }

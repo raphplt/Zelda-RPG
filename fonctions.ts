@@ -1,5 +1,6 @@
 import rs = require('readline-sync');
 import CharStats from './instances';
+import { Ganon } from './objets';
 
 export default function combat(enemy : CharStats, hero: CharStats) {
   console.log(`\x1b[0;31m${enemy.name}\x1b[0m has \x1b[0;31m${enemy.hp}\x1b[0m hp.`);
@@ -34,5 +35,9 @@ export default function combat(enemy : CharStats, hero: CharStats) {
       return;
     }
   }
-  console.log(`You have ${hero.hp} hp left.`);
+  if (enemy.name === 'Ganon') {
+    console.log('You win the game GG !');
+  } else {
+    console.log(`You have ${hero.hp} hp left.`);
+  }
 }
