@@ -1,4 +1,3 @@
-import { Console } from 'console';
 import combat from './fonctions';
 import { Bokoblin, Ganon, Link } from './objets';
 
@@ -35,7 +34,7 @@ export default function test() {
 }
 
 function start() {
-  for (let i = 0; i < 10; i += 1) {
+  for (let i : number = 0; i < 10; i += 1) {
     if (i === 9) {
       console.log(`
 
@@ -67,12 +66,14 @@ function start() {
         console.log('No room for weakness here');
         return;
       }
+      console.log(`You have entered the path number ${i}`);
       console.log('============ BOSS FIGHT  ============');
       combat(Ganon, Link);
     } else {
+      console.log(`You have entered the path number ${i + 1}`);
       console.log(`============ FIGHT ${i + 1} ============`);
       combat(Bokoblin, Link);
-      console.log(`\nGG !\nYou complete the FIGHT ${i + 1}\n`);
+      console.log(`Congratulations, you beat the enemy from floor ${i + 1}! Get to the top floor`);
       console.log('============ END OF FIGTH ============');
       const next = readline.keyInYN('Do you want to go to the next floor?');
       if (next === false) {
