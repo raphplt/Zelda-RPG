@@ -1,5 +1,5 @@
-import test from './main';
 import readline = require('readline-sync');
+import test from './main';
 
 function start() {
   const choose = readline.keyInYN('Start game ?');
@@ -10,4 +10,5 @@ function start() {
     return console.log('Goodbye');
   }
 }
+
 start();
