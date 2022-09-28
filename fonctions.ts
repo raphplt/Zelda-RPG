@@ -4,17 +4,17 @@ import CharStats from './instances';
 const rs = require('readline-sync');
 
 export default function combat(enemy : CharStats, hero: CharStats) {
-  console.log(`${enemy.name} has ${enemy.hp} hp.`);
-  console.log(`You have ${hero.hp} hp.`);
+  console.log(`\x1b[0;31m${enemy.name}\x1b[0m has \x1b[0;31m${enemy.hp}\x1b[0m hp.`);
+  console.log(`\x1b[0;32mYou\x1b[0m have \x1b[0;32m${hero.hp}\x1b[0m hp.`);
   let enemyHp : number = enemy.hp;
   while (enemyHp > 0) {
     const action = rs.keyInSelect(['Attack', 'Heal'], 'What do you want to do?');
     if (action === 0) {
       enemyHp -= hero.strength;
-      console.log(`${enemy.name} has ${enemyHp} hp.`);
+      console.log(`\n\x1b[0;31m${enemy.name}\x1b[0m has \x1b[0;31m${enemy.hp}\x1b[0m hp.`);
       if (enemyHp > 0) {
         hero.hp -= enemy.strength;
-        console.log(`${enemy.name} attacks you, you have ${hero.hp} hp remaining.`);
+        console.log(`\x1b[0;31m${enemy.name}\x1b[0m attacks you, \x1b[0;32myou\x1b[0m have \x1b[0;32m${hero.hp}\x1b[0m hp remaining.`);
       }
     } if (action === 1) {
       console.log('You have no potion remaining.');
@@ -28,4 +28,3 @@ export default function combat(enemy : CharStats, hero: CharStats) {
   }
   console.log(hero.hp);
 }
-combat(Bokoblin, Link);
