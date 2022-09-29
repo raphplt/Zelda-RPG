@@ -2,11 +2,13 @@
 /* eslint-disable no-param-reassign */
 import rs = require('readline-sync');
 import CharStats from './instances';
+import { playerHP } from './main';
 
 export let death : boolean = false;
 
 export function combat(enemy : CharStats, hero: CharStats) {
-  const defHeroHP : number = hero.hp;
+  const maxHP : number = playerHP;
+  const halfMaxHp : number = (maxHP / 2);
   console.log(`\x1b[0;31m${enemy.name}\x1b[0m has \x1b[0;31m${enemy.hp}\x1b[0m hp.`);
   let EnemyHearts : string = '';
   for (let a : number = 0; a < (enemy.hp / 10); a += 1) {
@@ -45,15 +47,16 @@ export function combat(enemy : CharStats, hero: CharStats) {
     }
 
     if (action === 1) {
-      if (hero.hp < defHeroHP / 2) {
-        hero.hp += (defHeroHP / 2);
-        console.log(`You have restored yourself ${Math.floor(defHeroHP / 2)}30hp`);
+      if (hero.hp <= halfMaxHp) {
+        hero.hp += halfMaxHp;
+        hero.hp -= enemy.str;
+        console.log(`You have restored yourself ${Math.floor(halfMaxHp)}hp`);
         console.log(`You have curently ${hero.hp} hp.`);
       } else {
-        hero.hp = defHeroHP;
+        hero.hp = maxHP;
+        hero.hp -= enemy.str;
         console.log('You have restored all your HP.');
       }
-      hero.hp -= enemy.str;
       console.log(`\x1b[0;31m${enemy.name}\x1b[0m attacks you, \x1b[0;32myou\x1b[0m have \x1b[0;32m${hero.hp}\x1b[0m hp remaining.`);
       if (hero.hp <= 0) {
         console.log('You die. Try again');
@@ -66,9 +69,5 @@ export function combat(enemy : CharStats, hero: CharStats) {
       console.log("You can't escape, fight.");
     }
   }
-  if (enemy.name === 'Ganon') {
-    console.log('You win the game GG !');
-  } else {
-    console.log(`You have ${hero.hp} hp left.`);
-  }
+  console.log(`You have ${hero.hp} hp left.`);
 }
