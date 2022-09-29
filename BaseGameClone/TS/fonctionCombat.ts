@@ -25,7 +25,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
   let enemyHp : number = enemy.hp;
 
   while (enemyHp > 0) {
-    const action = rs.keyInSelect(['Attack', 'Heal'], 'What do you want to do?');
+    const action = rs.keyInSelect(['Attack', 'Heal', 'Escape', 'Proctect'], 'What do you want to do?');
 
     if (action === 0) {
       console.log(`\n\x1b[0;31mYou\x1b[0m inflicted \x1b[0;31m${hero.str}\x1b[0m damage on the enemy`);
@@ -64,9 +64,21 @@ export function combat(enemy : CharStats, hero: CharStats) {
         return;
       }
     }
-
     if (action === 2) {
-      console.log("You can't escape, fight.");
+      death = true;
+      console.log('You can\'t escape, fight.');
+    }
+    if (action === 3) {
+      hero.hp -= enemy.str;
+      console.log(`\x1b[0;31m${enemy.name}\x1b[0m attacks you, but you only suffer half the damage \x1b[0;32myou\x1b[0m have \x1b[0;32m${hero.hp}\x1b[0m hp remaining.`);
+      if (hero.hp <= 0) {
+        console.log('You die. Try again');
+        death = true;
+        return;
+      }
+    }
+    if (action === 4) {
+      console.log('Don\'t try to run away, you know it\'s impossible');
     }
   }
   console.log(`You have ${hero.hp} hp left.`);
