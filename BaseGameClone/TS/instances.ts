@@ -19,3 +19,23 @@ export interface Player {
   gold: number,
   inventory : any[],
 }
+
+export interface Classe {
+  id: number,
+  name: string,
+  strengths: any[],
+  weaknesses: any[],
+  attack_type: string,
+  alignment: string,
+  rarity: number
+}
+
+export interface Race {
+  id: number,
+  name: string,
+  strengths: any[],
+  weaknesses: any[],
+  attack_type: string,
+  alignment: string,
+  rarity: number
+}

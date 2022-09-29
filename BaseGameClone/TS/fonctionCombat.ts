@@ -1,6 +1,7 @@
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable no-param-reassign */
 import rs = require('readline-sync');
+import { dispayChar } from './basic_characteristics';
 import CharStats from './instances';
 import { playerHP } from './main';
 
@@ -32,7 +33,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
   let enemyHp : number = enemy.hp;
 
   while (enemyHp > 0) {
-    const action = rs.keyInSelect(['Attack', 'Heal', 'Escape', 'Proctect'], 'What do you want to do?');
+    const action = rs.keyInSelect(['Attack', 'Heal', 'Escape', 'Proctect', 'Character'], 'What do you want to do?');
 
     if (action === 0) {
       console.log(`\n\x1b[0;31mYou\x1b[0m inflicted \x1b[0;31m${Math.floor(hero.str)}\x1b[0m damage on the enemy`);
@@ -44,7 +45,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
       console.log(`\x1b[0;31m${enemy.name}\x1b[0m has now \x1b[0;31m${Math.floor(enemyHp)}\x1b[0m hp.`);
       HeartH(enemyHp);
       if (enemyHp > 0) {
-        if (hero.str < enemy.hp) {
+        if (enemy.str < hero.hp) {
           hero.hp -= enemy.str;
         } else {
           hero.hp = 0;
@@ -70,15 +71,17 @@ export function combat(enemy : CharStats, hero: CharStats) {
         hero.hp -= enemy.str;
         console.log('You have restored all your HP.');
       }
-      console.log(`\x1b[0;31m${enemy.name}\x1b[0m attacks you, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.ceil(hero.hp)}\x1b[0m hp remaining.`);
       Heart(hero);
       if (hero.hp <= 0) {
+        hero.hp = 0;
+        console.log(`\x1b[0;31m${enemy.name}\x1b[0m attacks you, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.ceil(hero.hp)}\x1b[0m hp remaining.`);
         console.log('You die. Try again');
         death = true;
         return;
       }
+      console.log(`\x1b[0;31m${enemy.name}\x1b[0m attacks you, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.ceil(hero.hp)}\x1b[0m hp remaining.`);
     }
-    if (action === 2) {
+    if (action === 5) {
       death = true;
       console.log('You can\'t escape, fight.');
     }
@@ -92,8 +95,11 @@ export function combat(enemy : CharStats, hero: CharStats) {
         return;
       }
     }
-    if (action === 4) {
+    if (action === 3) {
       console.log('Don\'t try to run away, you know it\'s impossible');
+    }
+    if (action === 4) {
+      dispayChar(hero);
     }
   }
   console.log(`You have ${Math.ceil(hero.hp)} hp left.`);
