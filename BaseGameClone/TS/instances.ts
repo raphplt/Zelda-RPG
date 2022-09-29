@@ -13,3 +13,9 @@ export default interface CharStats {
   class: number,
   rarity: number,
 }
+
+export interface Player {
+  xp: number,
+  gold: number,
+  inventory : any[],
+}
