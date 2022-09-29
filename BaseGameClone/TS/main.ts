@@ -9,14 +9,15 @@ const readline = require('readline-sync');
 
 export let playerHP : number = 0;
 
-function start(lvl) {
+function start(lvl, choosefloors) {
   const player = randomChar(tabPlayer, 1);
   playerHP = player.hp;
   console.log(`Hello hero, you play ${player.name}`);
   let i : number = 0;
-  while (i < 10) {
+  while (i < choosefloors) {
     i += 1;
-    if (i === 10) {
+    if (i === 10 || i === 20 || i === 30 || i === 40 || i === 50
+      || i === 60 || i === 70 || i === 80 || i === 90 || i === 100) {
       const next = readline.keyInYN('Do you want to fight the boss ?');
       if (next === false) {
         console.log('No room for weakness here');
@@ -51,17 +52,19 @@ function start(lvl) {
 }
 
 function entry(lvl) {
+  const tabfloors: string[] = ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'];
+  const choosefloors = readline.keyInSelect(tabfloors, 'Choose the number of fights');
   console.log('\n                            WELCOME TO THE CASTLE OF HYRULE ');
   console.log(spriteCastle);
   const enter = readline.keyInYN('Do you want to enter in the castle ?');
   if (enter === true) {
-    start(lvl);
+    start(lvl, tabfloors[choosefloors]);
   }
 }
 
 export default function startGame() {
-  const choose = readline.keyInSelect(['New Game', 'Quit']);
-  if (choose === 0) {
+  const choosegame = readline.keyInSelect(['New Game', 'Quit']);
+  if (choosegame === 0) {
     const difficulty = readline.keyInSelect(['Normal', 'Difficult', 'Insane'], 'Chosse you difficulty');
     console.log('Starting the game ...');
     if (difficulty === 0) {
