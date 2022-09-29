@@ -95,9 +95,6 @@ export function combat(enemy : CharStats, hero: CharStats) {
         return;
       }
     }
-    if (action === 3) {
-      console.log('Don\'t try to run away, you know it\'s impossible');
-    }
     if (action === 4) {
       dispayChar(hero);
     }
