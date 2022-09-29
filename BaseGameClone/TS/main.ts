@@ -50,7 +50,7 @@ function start(lvl) {
   }
 }
 
-function entry(lvl: number) {
+function entry(lvl) {
   console.log('\n                            WELCOME TO THE CASTLE OF HYRULE ');
   console.log(spriteCastle);
   const enter = readline.keyInYN('Do you want to enter in the castle ?');

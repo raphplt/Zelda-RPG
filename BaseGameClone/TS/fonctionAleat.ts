@@ -31,8 +31,11 @@ for (let a: number = 0; a < parseB.length; a += 1) {
   }
 }
 
-export function randomChar(tab : any[], lvl) {
-  const rand = Math.floor(Math.random() * lvl * tab.length);
+export function randomChar(tab : any[], multi) {
+  const rand = Math.floor(Math.random() * (tab.length));
   const rChar = tab[rand];
+  console.log(rChar);
+  rChar.hp *= multi;
+  console.log(rChar);
   return rChar;
 }
