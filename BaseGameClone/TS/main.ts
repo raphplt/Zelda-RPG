@@ -14,6 +14,7 @@ function start(lvl, choosefloors) {
   const player = randomChar(tabPlayer, 1);
   const user: Player = {
     xp: 0,
+    level: 1,
     gold: 0,
     inventory: [],
   };
@@ -50,7 +51,28 @@ function start(lvl, choosefloors) {
       console.log(`\x1b[35mCongratulations, you beat the enemy from floor\x1b[0m \x1b[33m${i}\x1b[0m! \x1b[35mGet to the top floor\x1b[0m`);
       const xpadd = Math.floor(Math.random() * (50 - 15 + 1) + 15);
       user.xp += Math.ceil(xpadd);
-      console.log(`You earned ${xpadd} xp !`);
+      console.log(`You earned ${xpadd} xp !\n`);
+      if (user.xp >= 100) {
+        user.level += 1;
+        console.log(`You just level up too level ${user.level}`);
+        const chooselevelup = readline.keyInSelect(['hp', 'strength', 'resistance', 'defense', 'speed'], 'Which skills do you want to upgrade ?');
+        if (chooselevelup === 0) {
+          player.hp += 3;
+        }
+        if (chooselevelup === 1) {
+          player.str += 1;
+        }
+        if (chooselevelup === 2) {
+          player.res += 1;
+        }
+        if (chooselevelup === 3) {
+          player.def += 1;
+        }
+        if (chooselevelup === 4) {
+          player.speed += 1;
+        }
+        user.xp = 0;
+      }
       console.log('================= END OF FIGTH =================');
       const next = readline.keyInYN('Do you want to go to the next floor?');
       if (next === false) {
