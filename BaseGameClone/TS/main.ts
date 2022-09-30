@@ -4,6 +4,7 @@ import { spriteCastle, spriteZelda } from './sprites';
 import {
   tabPlayer, tabBoss, tabEnemy, randomChar,
 } from './fonctionAleat';
+import { Player } from './instances';
 
 const readline = require('readline-sync');
 
