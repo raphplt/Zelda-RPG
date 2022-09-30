@@ -22,7 +22,6 @@ function HeartH(hp: number) {
   }
   console.log(`HP : ${hearts}`);
 }
-
 export function combat(enemy : CharStats, hero: CharStats) {
   const maxHP : number = playerHP;
   const halfMaxHp : number = (maxHP / 2);
@@ -31,7 +30,6 @@ export function combat(enemy : CharStats, hero: CharStats) {
   console.log(`\x1b[0;32mYou\x1b[0m have \x1b[0;32m${hero.hp}\x1b[0m hp.`);
   Heart(hero);
   let enemyHp : number = enemy.hp;
-
   while (enemyHp > 0) {
     const action = rs.keyInSelect(['Attack', 'Heal', 'Escape', 'Proctect', 'Character'], 'What do you want to do?');
 
