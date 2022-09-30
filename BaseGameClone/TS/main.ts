@@ -54,7 +54,7 @@ function start(lvl, choosefloors) {
 }
 
 function entry(lvl) {
-  const tabfloors: string[] = ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'];
+  const tabfloors: string[] = ['\x1b[35m10\x1b[0m', '\x1b[35m20\x1b[0m', '\x1b[35m30\x1b[0m', '\x1b[35m40\x1b[0m', '\x1b[35m50\x1b[0m', '\x1b[35m60\x1b[0m', '\x1b[35m70\x1b[0m', '\x1b[35m80\x1b[0m', '\x1b[35m90\x1b[0m', ' \x1b[35m100\x1b[0m'];
   const choosefloors = readline.keyInSelect(tabfloors, 'Choose the number of fights');
   console.log('Starting the game ...');
   console.clear();
@@ -69,7 +69,7 @@ function entry(lvl) {
 
 export default function startGame() {
   console.clear();
-  const choosegame = readline.keyInSelect(['\x1b[36mNew Game\x1b[0m', '\x1b[36mQuit\x1b[0m']);
+  const choosegame = readline.keyInSelect(['\x1b[4mNew Game\x1b[0m', '\x1b[4mQuit\x1b[0m']);
   if (choosegame === 0) {
     console.clear();
     const difficulty = readline.keyInSelect(['\x1b[32mNormal\x1b[0m', '\x1b[33mDifficult\x1b[0m', '\x1b[31mInsane\x1b[0m'], 'Chosse you difficulty');
