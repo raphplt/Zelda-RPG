@@ -12,6 +12,11 @@ export let playerHP : number = 0;
 
 function start(lvl, choosefloors) {
   const player = randomChar(tabPlayer, 1);
+  const user: Player = {
+    xp: 0,
+    gold: 0,
+    inventory: [],
+  };
   playerHP = player.hp;
   console.log(`Hello hero, you play ${player.name}`);
   let i : number = 0;
@@ -43,7 +48,10 @@ function start(lvl, choosefloors) {
         return;
       }
       console.log(`\x1b[35mCongratulations, you beat the enemy from floor\x1b[0m \x1b[33m${i}\x1b[0m! \x1b[35mGet to the top floor\x1b[0m`);
-      console.log('==================== END OF FIGTH ====================');
+      const xpadd = Math.floor(Math.random() * (50 - 15 + 1) + 15);
+      user.xp += Math.ceil(xpadd);
+      console.log(`You earned ${xpadd} xp !`);
+      console.log('================= END OF FIGTH =================');
       const next = readline.keyInYN('Do you want to go to the next floor?');
       if (next === false) {
         console.log('No room for weakness here');
@@ -55,7 +63,7 @@ function start(lvl, choosefloors) {
 }
 
 function entry(lvl) {
-  const tabfloors: string[] = ['\x1b[35m10\x1b[0m', '\x1b[35m20\x1b[0m', '\x1b[35m30\x1b[0m', '\x1b[35m40\x1b[0m', '\x1b[35m50\x1b[0m', '\x1b[35m60\x1b[0m', '\x1b[35m70\x1b[0m', '\x1b[35m80\x1b[0m', '\x1b[35m90\x1b[0m', '\x1b[35m100\x1b[0m'];
+  const tabfloors: string[] = ['\x1b[35m10\x1b[0m', '\x1b[35m20\x1b[0m', '\x1b[35m30\x1b[0m', '\x1b[35m40\x1b[0m', '\x1b[35m50\x1b[0m', '\x1b[35m60\x1b[0m', '\x1b[35m70\x1b[0m', '\x1b[35m80\x1b[0m', '\x1b[35m90\x1b[0m', ' \x1b[35m100\x1b[0m'];
   const choosefloors = readline.keyInSelect(tabfloors, 'Choose the number of fights');
   console.log('Starting the game ...');
   console.clear();
@@ -73,7 +81,7 @@ export default function startGame() {
   const choosegame = readline.keyInSelect(['\x1b[4mNew Game\x1b[0m', '\x1b[4mQuit\x1b[0m']);
   if (choosegame === 0) {
     console.clear();
-    const difficulty = readline.keyInSelect(['\x1b[32mNormal\x1b[0m', '\x1b[33mDifficult\x1b[0m', '\x1b[31mInsane\x1b[0m'], 'Choose you difficulty');
+    const difficulty = readline.keyInSelect(['\x1b[32mNormal\x1b[0m', '\x1b[33mDifficult\x1b[0m', '\x1b[31mInsane\x1b[0m'], 'Chosse you difficulty');
     console.clear();
     if (difficulty === 0) {
       return (entry(1));
