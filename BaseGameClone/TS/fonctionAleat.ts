@@ -3,6 +3,7 @@ import CharStats from './instances';
 
 const content = readFileSync('../JSON/enemies.json', 'utf-8');
 const parseE : CharStats[] = JSON.parse(content);
+
 const content1 = readFileSync('../JSON/players.json', 'utf-8');
 const parseP : CharStats[] = JSON.parse(content1);
 
