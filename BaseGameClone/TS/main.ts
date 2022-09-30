@@ -1,5 +1,4 @@
 /* eslint-disable import/no-mutable-exports */
-import { read } from 'fs';
 import { combat, death } from './fonctionCombat';
 import { spriteCastle, spriteZelda } from './sprites';
 import {
