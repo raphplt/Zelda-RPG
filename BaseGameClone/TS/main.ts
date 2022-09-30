@@ -70,10 +70,10 @@ function entry(lvl) {
 
 export default function startGame() {
   console.clear();
-  const choosegame = readline.keyInSelect(['New Game', 'Quit']);
+  const choosegame = readline.keyInSelect(['\x1b[36mNew Game\x1b[0m', '\x1b[36mQuit\x1b[0m']);
   if (choosegame === 0) {
     console.clear();
-    const difficulty = readline.keyInSelect(['Normal', 'Difficult', 'Insane'], 'Chosse you difficulty');
+    const difficulty = readline.keyInSelect(['\x1b[32mNormal\x1b[0m', '\x1b[33mDifficult\x1b[0m', '\x1b[31mInsane\x1b[0m'], 'Chosse you difficulty');
     console.clear();
     if (difficulty === 0) {
       return (entry(1));
