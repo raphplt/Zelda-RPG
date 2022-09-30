@@ -1,10 +1,9 @@
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable no-param-reassign */
-import { read } from 'fs';
 import rs = require('readline-sync');
 import { dispayChar, parseClass, parseRaces } from './basic_characteristics';
 import CharStats from './instances';
-import { playerHP} from './main';
+import { playerHP } from './main';
 import { spritelink } from './sprites';
 
 export let death : boolean = false;
@@ -28,47 +27,46 @@ export function combat(enemy : CharStats, hero: CharStats) {
   let dmgModifE : number = 1;
   let dmgModifP : number = 1;
   for (let a : number = 0; a < parseClass[hero.class].weaknesses.length; a += 1) {
-    if (parseClass[hero.id].weaknesses[a] === enemy.id) {
+    if (parseClass[hero.class].weaknesses[a] === enemy.id) {
       dmgModifP /= 2;
     }
   }
   for (let a : number = 0; a < parseClass[enemy.class].weaknesses.length; a += 1) {
-    if (parseClass[enemy.id].weaknesses[a] === hero.id) {
+    if (parseClass[enemy.class].weaknesses[a] === hero.id) {
       dmgModifE /= 2;
     }
   }
   for (let a : number = 0; a < parseRaces[hero.race].weaknesses.length; a += 1) {
-    if (parseRaces[hero.id].weaknesses[a] === enemy.id) {
+    if (parseRaces[hero.class].weaknesses[a] === enemy.id) {
       dmgModifP /= 2;
     }
   }
   for (let a : number = 0; a < parseRaces[enemy.race].weaknesses.length; a += 1) {
-    if (parseRaces[enemy.id].weaknesses[a] === hero.id) {
+    if (parseRaces[enemy.class].weaknesses[a] === hero.id) {
       dmgModifE /= 2;
     }
   }
 
   for (let a : number = 0; a < parseClass[hero.class].strengths.length; a += 1) {
-    if (parseClass[hero.id].strengths[a] === enemy.id) {
+    if (parseClass[hero.class].strengths[a] === enemy.id) {
       dmgModifE *= 2;
     }
   }
   for (let a : number = 0; a < parseClass[enemy.class].strengths.length; a += 1) {
-    if (parseClass[enemy.id].strengths[a] === hero.id) {
+    if (parseClass[enemy.class].strengths[a] === hero.id) {
       dmgModifP *= 2;
     }
   }
   for (let a : number = 0; a < parseRaces[hero.class].strengths.length; a += 1) {
-    if (parseRaces[hero.id].strengths[a] === enemy.id) {
+    if (parseRaces[hero.class].strengths[a] === enemy.id) {
       dmgModifE *= 2;
     }
   }
   for (let a : number = 0; a < parseRaces[enemy.race].strengths.length; a += 1) {
-    if (parseRaces[enemy.id].strengths[a] === hero.id) {
+    if (parseRaces[enemy.class].strengths[a] === hero.id) {
       dmgModifP *= 2;
     }
   }
-  console.log(dmgModifE, dmgModifP);
   const maxHP : number = playerHP;
   const halfMaxHp : number = (maxHP / 2);
   console.log(`\x1b[0;31m${enemy.name}\x1b[0m has \x1b[0;31m${enemy.hp}\x1b[0m hp.`);
