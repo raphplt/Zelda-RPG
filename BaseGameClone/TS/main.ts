@@ -14,7 +14,7 @@ function start(lvl, choosefloors) {
   playerHP = player.hp;
   console.log(`Hello hero, you play ${player.name}`);
   let i : number = 0;
-  while (i < choosefloors) {
+  while (i < choosefloors.length) {
     i += 1;
     if (i === 10 || i === 20 || i === 30 || i === 40 || i === 50
       || i === 60 || i === 70 || i === 80 || i === 90 || i === 100) {
