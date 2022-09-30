@@ -71,7 +71,7 @@ function start(lvl, choosefloors) {
         if (chooselevelup === 4) {
           player.speed += 1;
         }
-        user.xp = 0;
+        user.xp -= 100;
       }
       console.log('================= END OF FIGTH =================');
       const next = readline.keyInYN('Do you want to go to the next floor?');
