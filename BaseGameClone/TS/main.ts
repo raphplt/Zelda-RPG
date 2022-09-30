@@ -1,6 +1,6 @@
 /* eslint-disable import/no-mutable-exports */
 import { combat, death } from './fonctionCombat';
-import { spriteCastle } from './sprites';
+import { spriteCastle, spriteZelda } from './sprites';
 import {
   tabPlayer, tabBoss, tabEnemy, randomChar,
 } from './fonctionAleat';
@@ -28,7 +28,8 @@ function start(lvl, choosefloors) {
       console.log('============ BOSS FIGHT  ============');
       combat(boss, player);
       if (death === false) {
-        console.log('Congratulation ! You finished the game !');
+        console.log(spriteZelda);
+        console.log('Congratulation ! You saved the princess Zelda !');
       }
     } else {
       if (death === false) {
@@ -57,7 +58,7 @@ function entry(lvl) {
   const choosefloors = readline.keyInSelect(tabfloors, 'Choose the number of fights');
   console.log('Starting the game ...');
   console.clear();
-  console.log('\n                            WELCOME TO THE CASTLE OF HYRULE ');
+  console.log('\n                          WELCOME TO THE CASTLE OF HYRULE ');
   console.log(spriteCastle);
   const enter = readline.keyInYN('Do you want to enter in the castle ?');
   if (enter === true) {
