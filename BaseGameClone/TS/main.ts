@@ -25,7 +25,7 @@ function start(lvl, choosefloors) {
       }
       const boss = randomChar(tabBoss, lvl);
       console.log(`You have entered the path number ${i}`);
-      console.log('============ BOSS FIGHT  ============');
+      console.log('================= BOSS FIGHT  =================');
       combat(boss, player);
       if (death === false) {
         console.log(spriteZelda);
@@ -35,14 +35,14 @@ function start(lvl, choosefloors) {
       if (death === false) {
         const enemy = randomChar(tabEnemy, lvl);
         console.log(`You have entered the path number ${i}`);
-        console.log(`============ FIGHT ${i} ============`);
+        console.log(`================= FIGHT ${i} =================`);
         combat(enemy, player);
       }
       if (death === true) {
         return;
       }
       console.log(`\x1b[35mCongratulations, you beat the enemy from floor\x1b[0m \x1b[33m${i}\x1b[0m! \x1b[35mGet to the top floor\x1b[0m`);
-      console.log('============ END OF FIGTH ============');
+      console.log('================= END OF FIGTH =================');
       const next = readline.keyInYN('Do you want to go to the next floor?');
       if (next === false) {
         console.log('No room for weakness here');
