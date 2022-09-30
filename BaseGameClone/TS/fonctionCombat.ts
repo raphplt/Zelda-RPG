@@ -1,9 +1,11 @@
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable no-param-reassign */
+import { read } from 'fs';
 import rs = require('readline-sync');
 import { dispayChar } from './basic_characteristics';
 import CharStats from './instances';
-import { playerHP } from './main';
+import { playerHP} from './main';
+import { spritelink } from './sprites';
 
 export let death : boolean = false;
 
@@ -33,7 +35,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
   let enemyHp : number = enemy.hp;
 
   while (enemyHp > 0) {
-    const action = rs.keyInSelect(['Attack', 'Heal', 'Escape', 'Proctect', 'Character'], 'What do you want to do?');
+    const action = rs.keyInSelect(['🗡️ Attack', '❤️ Heal', '🏃Escape', '🛡️ Proctect', '🧝Character'], 'What do you want to do?');
 
     if (action === 0) {
       console.clear();
@@ -55,6 +57,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
         Heart(hero);
       }
       if (hero.hp <= 0) {
+        console.log(spritelink);
         console.log('You die. Try again');
         death = true;
         return;
@@ -77,6 +80,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
       if (hero.hp <= 0) {
         hero.hp = 0;
         console.log(`\x1b[0;31m${enemy.name}\x1b[0m attacks you, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.ceil(hero.hp)}\x1b[0m hp remaining.`);
+        console.log(spritelink);
         console.log('You die. Try again');
         death = true;
         return;
@@ -93,6 +97,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
       console.log(`\x1b[0;31m${enemy.name}\x1b[0m attacks you, but you only suffer half the damage, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.ceil(hero.hp)}\x1b[0m hp remaining.`);
       Heart(hero);
       if (hero.hp <= 0) {
+        console.log(spritelink);
         console.log('You die. Try again');
         death = true;
         return;
