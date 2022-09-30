@@ -3,7 +3,6 @@ import CharStats from './instances';
 
 const content = readFileSync('../JSON/enemies.json', 'utf-8');
 const parseE : CharStats[] = JSON.parse(content);
-
 const content1 = readFileSync('../JSON/players.json', 'utf-8');
 const parseP : CharStats[] = JSON.parse(content1);
 
@@ -35,5 +34,12 @@ export function randomChar(tab : any[], multi) {
   const rand = Math.floor(Math.random() * (tab.length));
   const rChar = tab[rand];
   rChar.hp *= multi;
+  rChar.mp *= multi;
+  rChar.str *= multi;
+  rChar.int *= multi;
+  rChar.def *= multi;
+  rChar.res *= multi;
+  rChar.spd *= multi;
+  rChar.luck *= multi;
   return rChar;
 }

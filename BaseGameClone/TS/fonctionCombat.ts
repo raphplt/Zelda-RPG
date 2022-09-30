@@ -1,7 +1,7 @@
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable no-param-reassign */
 import rs = require('readline-sync');
-import { dispayChar } from './basic_characteristics';
+import { dispayChar, parseClass, parseRaces } from './basic_characteristics';
 import CharStats from './instances';
 import { playerHP } from './main';
 
@@ -23,6 +23,50 @@ function HeartH(hp: number) {
   console.log(`HP : ${hearts}`);
 }
 export function combat(enemy : CharStats, hero: CharStats) {
+  let dmgModifE : number = 1;
+  let dmgModifP : number = 1;
+  for (let a : number = 0; a < parseClass[hero.class].weaknesses.length; a += 1) {
+    if (parseClass[hero.id].weaknesses[a] === enemy.id) {
+      dmgModifP /= 2;
+    }
+  }
+  for (let a : number = 0; a < parseClass[enemy.class].weaknesses.length; a += 1) {
+    if (parseClass[enemy.id].weaknesses[a] === hero.id) {
+      dmgModifE /= 2;
+    }
+  }
+  for (let a : number = 0; a < parseRaces[hero.race].weaknesses.length; a += 1) {
+    if (parseRaces[hero.id].weaknesses[a] === enemy.id) {
+      dmgModifP /= 2;
+    }
+  }
+  for (let a : number = 0; a < parseRaces[enemy.race].weaknesses.length; a += 1) {
+    if (parseRaces[enemy.id].weaknesses[a] === hero.id) {
+      dmgModifE /= 2;
+    }
+  }
+
+  for (let a : number = 0; a < parseClass[hero.class].strengths.length; a += 1) {
+    if (parseClass[hero.id].strengths[a] === enemy.id) {
+      dmgModifE *= 2;
+    }
+  }
+  for (let a : number = 0; a < parseClass[enemy.class].strengths.length; a += 1) {
+    if (parseClass[enemy.id].strengths[a] === hero.id) {
+      dmgModifP *= 2;
+    }
+  }
+  for (let a : number = 0; a < parseRaces[hero.class].strengths.length; a += 1) {
+    if (parseRaces[hero.id].strengths[a] === enemy.id) {
+      dmgModifE *= 2;
+    }
+  }
+  for (let a : number = 0; a < parseRaces[enemy.race].strengths.length; a += 1) {
+    if (parseRaces[enemy.id].strengths[a] === hero.id) {
+      dmgModifP *= 2;
+    }
+  }
+  console.log(dmgModifE, dmgModifP);
   const maxHP : number = playerHP;
   const halfMaxHp : number = (maxHP / 2);
   console.log(`\x1b[0;31m${enemy.name}\x1b[0m has \x1b[0;31m${enemy.hp}\x1b[0m hp.`);
@@ -34,9 +78,10 @@ export function combat(enemy : CharStats, hero: CharStats) {
     const action = rs.keyInSelect(['Attack', 'Heal', 'Escape', 'Proctect', 'Character'], 'What do you want to do?');
 
     if (action === 0) {
+      console.clear();
       console.log(`\n\x1b[0;31mYou\x1b[0m inflicted \x1b[0;31m${Math.floor(hero.str)}\x1b[0m damage on the enemy`);
       if (hero.str < enemyHp) {
-        enemyHp -= hero.str;
+        enemyHp -= hero.str * dmgModifP;
       } else {
         enemyHp = 0;
       }
@@ -44,7 +89,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
       HeartH(enemyHp);
       if (enemyHp > 0) {
         if (enemy.str < hero.hp) {
-          hero.hp -= enemy.str;
+          hero.hp -= enemy.str * dmgModifE;
         } else {
           hero.hp = 0;
         }
@@ -59,14 +104,15 @@ export function combat(enemy : CharStats, hero: CharStats) {
     }
 
     if (action === 1) {
+      console.clear();
       if (hero.hp <= halfMaxHp) {
         hero.hp += halfMaxHp;
-        hero.hp -= enemy.str;
+        hero.hp -= enemy.str * dmgModifE;
         console.log(`You have restored yourself ${Math.floor(halfMaxHp)}hp`);
         console.log(`You have curently ${hero.hp} hp.`);
       } else {
         hero.hp = maxHP;
-        hero.hp -= enemy.str;
+        hero.hp -= enemy.str * dmgModifE;
         console.log('You have restored all your HP.');
       }
       Heart(hero);
@@ -80,6 +126,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
       console.log(`\x1b[0;31m${enemy.name}\x1b[0m attacks you, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.ceil(hero.hp)}\x1b[0m hp remaining.`);
     }
     if (action === 5) {
+      console.clear();
       death = true;
       console.log('You can\'t escape, fight.');
     }
@@ -94,6 +141,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
       }
     }
     if (action === 4) {
+      console.clear();
       dispayChar(hero);
     }
   }

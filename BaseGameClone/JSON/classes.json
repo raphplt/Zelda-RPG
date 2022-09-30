@@ -3,12 +3,14 @@
         "id": 1,
         "name": "Hero",
         "strengths": [
+            0,
             4,
             5,
             8,
             9
         ],
         "weaknesses": [
+            0,
             7,
             8
         ],
@@ -20,10 +22,12 @@
         "id": 2,
         "name": "Warrior",
         "strengths": [
+            0,
             3,
             4
         ],
         "weaknesses": [
+            0,
             7
         ],
         "attack_type": "physical",
@@ -34,10 +38,12 @@
         "id": 3,
         "name": "Mage",
         "strengths": [
+            0,
             6,
             9
         ],
         "weaknesses": [
+            0,
             2,
             4,
             5
@@ -50,10 +56,12 @@
         "id": 4,
         "name": "Dark Mage",
         "strengths": [
+            0,
             3,
             9
         ],
         "weaknesses": [
+            0,
             1,
             2,
             5
@@ -66,11 +74,13 @@
         "id": 5,
         "name": "Assassin",
         "strengths": [
+            0,
             3,
             4,
             9
         ],
         "weaknesses": [
+            0,
             5,
             7
         ],
@@ -82,9 +92,11 @@
         "id": 6,
         "name": "Priest",
         "strengths": [
+            0,
             9
         ],
         "weaknesses": [
+            0,
             3,
             8
         ],
@@ -96,11 +108,14 @@
         "id": 7,
         "name": "Monk",
         "strengths": [
+            0,
             1,
             2,
             5
         ],
-        "weaknesses": [],
+        "weaknesses": [
+            0
+        ],
         "attack_type": "physical",
         "alignment": "good",
         "rarity": 1
@@ -109,10 +124,12 @@
         "id": 8,
         "name": "Death Knight",
         "strengths": [
+            0,
             1,
             6
         ],
         "weaknesses": [
+            0,
             1
         ],
         "attack_type": "physical",
@@ -123,9 +140,11 @@
         "id": 9,
         "name": "Necromancer",
         "strengths": [
+            0,
             4
         ],
         "weaknesses": [
+            0,
             1,
             3,
             4,

@@ -47,6 +47,7 @@ function start(lvl, choosefloors) {
         console.log('No room for weakness here');
         return;
       }
+      console.clear();
     }
   }
 }
@@ -54,19 +55,24 @@ function start(lvl, choosefloors) {
 function entry(lvl) {
   const tabfloors: string[] = ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'];
   const choosefloors = readline.keyInSelect(tabfloors, 'Choose the number of fights');
+  console.log('Starting the game ...');
+  console.clear();
   console.log('\n                            WELCOME TO THE CASTLE OF HYRULE ');
   console.log(spriteCastle);
   const enter = readline.keyInYN('Do you want to enter in the castle ?');
   if (enter === true) {
+    console.clear();
     start(lvl, tabfloors[choosefloors]);
   }
 }
 
 export default function startGame() {
+  console.clear();
   const choosegame = readline.keyInSelect(['New Game', 'Quit']);
   if (choosegame === 0) {
+    console.clear();
     const difficulty = readline.keyInSelect(['Normal', 'Difficult', 'Insane'], 'Chosse you difficulty');
-    console.log('Starting the game ...');
+    console.clear();
     if (difficulty === 0) {
       return (entry(1));
     }

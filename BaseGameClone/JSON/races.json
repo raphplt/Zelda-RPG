@@ -2,35 +2,45 @@
     {
         "id": 1,
         "name": "Hylian",
-        "strength": [
+        "strengths": [
             12,
             13,
             15
         ],
-        "weakness": [],
+        "weaknesses": [
+            0
+        ],
         "rarity": ""
     },
     {
         "id": 2,
         "name": "Sheikah",
-        "strength": [
+        "strengths": [
             9
         ],
-        "weakness": [],
+        "weaknesses": [
+            0
+        ],
         "rarity": ""
     },
     {
         "id": 3,
         "name": "Gerudo",
-        "strength": [],
-        "weakness": [],
+        "strengths": [
+            0
+        ],
+        "weaknesses": [
+            0
+        ],
         "rarity": ""
     },
     {
         "id": 4,
         "name": "Zora",
-        "strength": [],
-        "weakness": [
+        "strengths": [
+            0
+        ],
+        "weaknesses": [
             9
         ],
         "rarity": ""
@@ -38,8 +48,10 @@
     {
         "id": 5,
         "name": "Goron",
-        "strength": [],
-        "weakness": [
+        "strengths": [
+            0
+        ],
+        "weaknesses": [
             9
         ],
         "rarity": ""
@@ -47,8 +59,10 @@
     {
         "id": 6,
         "name": "Kokiri",
-        "strength": [],
-        "weakness": [
+        "strengths": [
+            0
+        ],
+        "weaknesses": [
             12
         ],
         "rarity": ""
@@ -56,15 +70,21 @@
     {
         "id": 7,
         "name": "Twili",
-        "strength": [],
-        "weakness": [],
+        "strengths": [
+            0
+        ],
+        "weaknesses": [
+            0
+        ],
         "rarity": ""
     },
     {
         "id": 8,
         "name": "Minish",
-        "strength": [],
-        "weakness": [
+        "strengths": [
+            0
+        ],
+        "weaknesses": [
             9,
             12
         ],
@@ -73,13 +93,13 @@
     {
         "id": 9,
         "name": "Humain",
-        "strength": [
+        "strengths": [
             4,
             5,
             8,
             11
         ],
-        "weakness": [
+        "weaknesses": [
             2,
             12,
             13
@@ -89,15 +109,21 @@
     {
         "id": 10,
         "name": "Reptilian",
-        "strength": [],
-        "weakness": [],
+        "strengths": [
+            0
+        ],
+        "weaknesses": [
+            0
+        ],
         "rarity": ""
     },
     {
         "id": 11,
         "name": "Avian",
-        "strength": [],
-        "weakness": [
+        "strengths": [
+            0
+        ],
+        "weaknesses": [
             9
         ],
         "rarity": ""
@@ -105,12 +131,12 @@
     {
         "id": 12,
         "name": "Monster",
-        "strength": [
+        "strengths": [
             6,
             8,
             9
         ],
-        "weakness": [
+        "weaknesses": [
             1,
             14
         ],
@@ -119,10 +145,10 @@
     {
         "id": 13,
         "name": "Demon",
-        "strength": [
+        "strengths": [
             9
         ],
-        "weakness": [
+        "weaknesses": [
             1,
             14
         ],
@@ -131,19 +157,23 @@
     {
         "id": 14,
         "name": "Divine",
-        "strength": [
+        "strengths": [
             12,
             13,
             15
         ],
-        "weakness": [],
+        "weaknesses": [
+            0
+        ],
         "rarity": ""
     },
     {
         "id": 15,
         "name": "Undead",
-        "strength": "",
-        "weakness": [
+        "strengths": [
+            0
+        ],
+        "weaknesses": [
             1,
             14
         ],
@@ -152,8 +182,10 @@
     {
         "id": 16,
         "name": "Insect",
-        "strength": [],
-        "weakness": [
+        "strengths": [
+            0
+        ],
+        "weaknesses": [
             17
         ],
         "rarity": ""
@@ -161,10 +193,12 @@
     {
         "id": 17,
         "name": "Machine",
-        "strength": [
+        "strengths": [
             16
         ],
-        "weakness": [],
+        "weaknesses": [
+            0
+        ],
         "rarity": ""
     }
 ]
