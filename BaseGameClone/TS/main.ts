@@ -10,7 +10,7 @@ const readline = require('readline-sync');
 
 export let playerHP : number = 0;
 
-function start(lvl, choosefloors) {
+function start(lvl: number, choosefloors) {
   const player = randomChar(tabPlayer, 1);
   const user: Player = {
     xp: 0,
@@ -84,7 +84,7 @@ function start(lvl, choosefloors) {
   }
 }
 
-function entry(lvl) {
+function entry(lvl: number) {
   const tabfloors: string[] = ['\x1b[35m10\x1b[0m', '\x1b[35m20\x1b[0m', '\x1b[35m30\x1b[0m', '\x1b[35m40\x1b[0m', '\x1b[35m50\x1b[0m', '\x1b[35m60\x1b[0m', '\x1b[35m70\x1b[0m', '\x1b[35m80\x1b[0m', '\x1b[35m90\x1b[0m', ' \x1b[35m100\x1b[0m'];
   const choosefloors = readline.keyInSelect(tabfloors, 'Choose the number of fights');
   console.log('Starting the game ...');
