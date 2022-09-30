@@ -36,6 +36,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
     const action = rs.keyInSelect(['Attack', 'Heal', 'Escape', 'Proctect', 'Character'], 'What do you want to do?');
 
     if (action === 0) {
+      console.clear();
       console.log(`\n\x1b[0;31mYou\x1b[0m inflicted \x1b[0;31m${Math.floor(hero.str)}\x1b[0m damage on the enemy`);
       if (hero.str < enemyHp) {
         enemyHp -= hero.str;
@@ -61,6 +62,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
     }
 
     if (action === 1) {
+      console.clear();
       if (hero.hp <= halfMaxHp) {
         hero.hp += halfMaxHp;
         hero.hp -= enemy.str;
@@ -82,6 +84,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
       console.log(`\x1b[0;31m${enemy.name}\x1b[0m attacks you, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.ceil(hero.hp)}\x1b[0m hp remaining.`);
     }
     if (action === 5) {
+      console.clear();
       death = true;
       console.log('You can\'t escape, fight.');
     }
@@ -96,6 +99,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
       }
     }
     if (action === 4) {
+      console.clear();
       dispayChar(hero);
     }
   }

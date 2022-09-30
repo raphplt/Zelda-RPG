@@ -35,5 +35,12 @@ export function randomChar(tab : any[], multi) {
   const rand = Math.floor(Math.random() * (tab.length));
   const rChar = tab[rand];
   rChar.hp *= multi;
+  rChar.mp *= multi;
+  rChar.str *= multi;
+  rChar.int *= multi;
+  rChar.def *= multi;
+  rChar.res *= multi;
+  rChar.spd *= multi;
+  rChar.luck *= multi;
   return rChar;
 }
