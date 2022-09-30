@@ -67,6 +67,20 @@ export function combat(enemy : CharStats, hero: CharStats) {
       dmgModifP *= 2;
     }
   }
+  let critP : string = 'Normal hit';
+  let critE : string = 'Nomal hit';
+  if (dmgModifE < 1) {
+    critE = '\x1b[36mGlancing hit\x1b[0m';
+  }
+  if (dmgModifE > 1) {
+    critE = '\x1b[33mCrushing hit\x1b[0m';
+  }
+  if (dmgModifP < 1) {
+    critP = '\x1b[36mGlancing hit\x1b[0m';
+  }
+  if (dmgModifP > 1) {
+    critP = '\x1b[33mCrushing hit\x1b[0m';
+  }
   const maxHP : number = playerHP;
   const halfMaxHp : number = (maxHP / 2);
   console.log(`\x1b[0;31m${enemy.name}\x1b[0m has \x1b[0;31m${enemy.hp}\x1b[0m hp.`);
@@ -79,7 +93,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
 
     if (action === 0) {
       console.clear();
-      console.log(`\n\x1b[0;31mYou\x1b[0m inflicted \x1b[0;31m${Math.floor(hero.str)}\x1b[0m damage on the enemy`);
+      console.log(`\n [${critP}] \x1b[0;32mYou\x1b[0m inflicted \x1b[0;32m${Math.floor(hero.str)}\x1b[0m damage on the enemy`);
       if (hero.str < enemyHp) {
         enemyHp -= hero.str * dmgModifP;
       } else {
@@ -93,7 +107,8 @@ export function combat(enemy : CharStats, hero: CharStats) {
         } else {
           hero.hp = 0;
         }
-        console.log(`\x1b[0;31m${enemy.name}\x1b[0m attacks you, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.floor(hero.hp)}\x1b[0m hp remaining.`);
+        console.log(`[${critE}] \x1b[0;31m${enemy.name}\x1b[0m deals you ${enemy.str * dmgModifE}.`);
+        console.log(`\x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.floor(hero.hp)}\x1b[0m hp remaining.`);
         Heart(hero);
       }
       if (hero.hp <= 0) {
@@ -119,7 +134,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
       Heart(hero);
       if (hero.hp <= 0) {
         hero.hp = 0;
-        console.log(`\x1b[0;31m${enemy.name}\x1b[0m attacks you, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.ceil(hero.hp)}\x1b[0m hp remaining.`);
+        console.log(`[${critE}] \x1b[0;31m${enemy.name}\x1b[0m attacks you, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.ceil(hero.hp)}\x1b[0m hp remaining.`);
         console.log(spriteGameOver);
         console.log('You die. Try again');
         death = true;
@@ -134,7 +149,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
     }
     if (action === 3) {
       hero.hp -= enemy.str;
-      console.log(`\x1b[0;31m${enemy.name}\x1b[0m attacks you, but you only suffer half the damage, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.ceil(hero.hp)}\x1b[0m hp remaining.`);
+      console.log(`[${critE}] \x1b[0;31m${enemy.name}\x1b[0m attacks you, but you only suffer half the damage, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.ceil(hero.hp)}\x1b[0m hp remaining.`);
       Heart(hero);
       if (hero.hp <= 0) {
         console.log(spriteGameOver);
