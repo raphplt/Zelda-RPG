@@ -91,9 +91,9 @@ export function combat(enemy : CharStats, hero: CharStats) {
   }
   const maxHP : number = playerHP;
   const halfMaxHp : number = (maxHP / 2);
-  console.log(`\x1b[0;31m${enemy.name}\x1b[0m has \x1b[0;31m${enemy.hp}\x1b[0m hp.`);
+  console.log(`\x1b[0;31m${enemy.name}\x1b[0m has \x1b[0;31m${Math.floor(enemy.hp)}\x1b[0m hp.`);
   Heart(enemy);
-  console.log(`\x1b[0;32mYou\x1b[0m have \x1b[0;32m${hero.hp}\x1b[0m hp.`);
+  console.log(`\x1b[0;32mYou\x1b[0m have \x1b[0;32m${Math.floor(hero.hp)}\x1b[0m hp.`);
   Heart(hero);
   let enemyHp : number = enemy.hp;
   // Add defense and resistance
@@ -145,12 +145,12 @@ export function combat(enemy : CharStats, hero: CharStats) {
       console.clear();
       if (hero.hp <= halfMaxHp) {
         hero.hp += halfMaxHp;
-        hero.hp -= Math.round(enemy.str * dmgModifE * criticalStrike - heroDef);
+        hero.hp -= Math.round(enemy.str * dmgModifE * criticalStrike + heroDef);
         console.log(`You have restored yourself ${Math.floor(halfMaxHp)}hp`);
         console.log(`You have curently ${hero.hp} hp.`);
       } else {
         hero.hp = maxHP;
-        hero.hp -= Math.round(enemy.str * dmgModifE * criticalStrike - heroDef);
+        hero.hp -= Math.round(enemy.str * dmgModifE * criticalStrike + heroDef);
         console.log('You have restored all your HP.');
       }
       Heart(hero);
@@ -171,7 +171,6 @@ export function combat(enemy : CharStats, hero: CharStats) {
     }
     if (action === 3) {
       hero.hp -= enemy.str;
-      console.log(`[${critE}] \x1b[0;31m${enemy.name}\x1b[0m attacks you, but you only suffer half the damage, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.ceil(hero.hp)}\x1b[0m hp remaining.`);
       Heart(hero);
       if (hero.hp <= 0) {
         console.log(spriteGameOver);
@@ -179,6 +178,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
         death = true;
         return;
       }
+      console.log(`[${critE}] \x1b[0;31m${enemy.name}\x1b[0m attacks you, but you only suffer half the damage, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.ceil(hero.hp)}\x1b[0m hp remaining.`);
     }
     if (action === 4) {
       console.clear();

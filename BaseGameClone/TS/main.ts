@@ -85,7 +85,7 @@ function start(lvl: number, choosefloors) {
 }
 
 function entry(lvl: number) {
-  const tabfloors: string[] = ['\x1b[1m10\x1b[0m', '\x1b[1m20\x1b[0m', '\x1b[1m30\x1b[0m', '\x1b[1m40\x1b[0m', '\x1b[1m50\x1b[0m', '\x1b[1m60\x1b[0m', '\x1b[1m70\x1b[0m', '\x1b[1m80\x1b[0m', '\x1b[1m90\x1b[0m', ' \x1b1m100\x1b[0m'];
+  const tabfloors: string[] = ['\x1b[1m10\x1b[0m', '\x1b[1m20\x1b[0m', '\x1b[1m30\x1b[0m', '\x1b[1m40\x1b[0m', '\x1b[1m50\x1b[0m', '\x1b[1m60\x1b[0m', '\x1b[1m70\x1b[0m', '\x1b[1m80\x1b[0m', '\x1b[1m90\x1b[0m', '\x1b[1m100\x1b[0m'];
   const choosefloors = readline.keyInSelect(tabfloors, 'Choose the number of floors');
   console.log('Starting the game ...');
   console.clear();
