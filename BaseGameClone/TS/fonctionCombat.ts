@@ -67,8 +67,8 @@ export function combat(enemy : CharStats, hero: CharStats) {
       dmgModifP *= 2;
     }
   }
-  let critP : string = 'Normal hit';
-  let critE : string = 'Nomal hit';
+  let critP : string = '\x1b[33mNormal hit\x1b[0m';
+  let critE : string = '\x1b[33mNomal hit\x1b[0m';
   if (dmgModifE < 1) {
     critE = '\x1b[36mGlancing hit\x1b[0m';
   }
@@ -106,9 +106,9 @@ export function combat(enemy : CharStats, hero: CharStats) {
 
     if (action === 0) {
       console.clear();
-      console.log(`\n [${critP}] \x1b[0;32mYou\x1b[0m inflicted \x1b[0;32m${Math.floor(hero.str)}\x1b[0m damage on the enemy`);
+      console.log(`\n[${critP}] \x1b[0;32mYou\x1b[0m inflicted \x1b[0;32m${Math.floor(hero.str)}\x1b[0m damage on the enemy.`);
       if (hero.str < enemyHp) {
-        enemyHp -= hero.str * dmgModifP + enemyDef;
+        enemyHp -= Math.round(hero.str * dmgModifP + enemyDef);
       } else {
         enemyHp = 0;
       }
@@ -116,12 +116,12 @@ export function combat(enemy : CharStats, hero: CharStats) {
       HeartH(enemyHp);
       if (enemyHp > 0) {
         if (enemy.str < hero.hp) {
-          hero.hp -= enemy.str * dmgModifE + heroDef;
+          hero.hp -= Math.round(enemy.str * dmgModifE + heroDef);
         } else {
           hero.hp = 0;
         }
-        console.log(`[${critE}]   \x1b[0;31m${enemy.name}\x1b[0m deals you ${enemy.str * dmgModifE}.`);
-        console.log(`\x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.floor(hero.hp)}\x1b[0m hp remaining.`);
+        console.log(`[${critE}] \x1b[0;31m${enemy.name}\x1b[0m deals you ${enemy.str * dmgModifE}.`);
+        console.log(`\x1b[0;32mYou\x1b[0m have \x1b[0;32m${Math.floor(hero.hp)}\x1b[0m hp remaining.`);
         Heart(hero);
       }
       if (hero.hp <= 0) {
@@ -136,12 +136,12 @@ export function combat(enemy : CharStats, hero: CharStats) {
       console.clear();
       if (hero.hp <= halfMaxHp) {
         hero.hp += halfMaxHp;
-        hero.hp -= enemy.str * dmgModifE - heroDef;
+        hero.hp -= Math.round(enemy.str * dmgModifE - heroDef);
         console.log(`You have restored yourself ${Math.floor(halfMaxHp)}hp`);
         console.log(`You have curently ${hero.hp} hp.`);
       } else {
         hero.hp = maxHP;
-        hero.hp -= enemy.str * dmgModifE - heroDef;
+        hero.hp -= Math.round(enemy.str * dmgModifE - heroDef);
         console.log('You have restored all your HP.');
       }
       Heart(hero);

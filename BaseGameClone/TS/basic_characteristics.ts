@@ -20,8 +20,8 @@ export function dispayChar(display: CharStats) {
       displayRace = parseRaces[a].name;
     }
   }
-  console.log('               INFORMATIONS');
+  console.log('              \x1b[33m- INFORMATIONS -\x1b[0m');
   console.log('===========================================');
-  console.log(`Name: ${display.name}\nClass: ${displayClass}\nRace: ${displayRace}\nHP: ${display.hp}\nStrength: ${display.str}\nDef: ${display.def}\nRes: ${display.res}\nSpeed: ${display.spd}`);
+  console.log(`\x1b[32mName:\x1b[0m ${display.name}\n\x1b[32mClass\x1b[0m: ${displayClass}\n\x1b[32mRace:\x1b[0m ${displayRace}\n\x1b[32mHP:\x1b[0m ${display.hp}\n\x1b[32mStrength:\x1b[0m ${display.str}\n\x1b[32mDef:\x1b[0m ${display.def}\n\x1b[32mRes:\x1b[0m ${display.res}\n\x1b[32mSpeed:\x1b[0m ${display.spd}`);
   console.log('===========================================');
 }

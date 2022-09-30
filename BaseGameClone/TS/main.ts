@@ -85,13 +85,13 @@ function start(lvl: number, choosefloors) {
 }
 
 function entry(lvl: number) {
-  const tabfloors: string[] = ['\x1b[35m10\x1b[0m', '\x1b[35m20\x1b[0m', '\x1b[35m30\x1b[0m', '\x1b[35m40\x1b[0m', '\x1b[35m50\x1b[0m', '\x1b[35m60\x1b[0m', '\x1b[35m70\x1b[0m', '\x1b[35m80\x1b[0m', '\x1b[35m90\x1b[0m', ' \x1b[35m100\x1b[0m'];
-  const choosefloors = readline.keyInSelect(tabfloors, 'Choose the number of fights');
+  const tabfloors: string[] = ['\x1b[1m10\x1b[0m', '\x1b[1m20\x1b[0m', '\x1b[1m30\x1b[0m', '\x1b[1m40\x1b[0m', '\x1b[1m50\x1b[0m', '\x1b[1m60\x1b[0m', '\x1b[1m70\x1b[0m', '\x1b[1m80\x1b[0m', '\x1b[1m90\x1b[0m', ' \x1b1m100\x1b[0m'];
+  const choosefloors = readline.keyInSelect(tabfloors, 'Choose the number of floors');
   console.log('Starting the game ...');
   console.clear();
   console.log('\n                          WELCOME TO THE CASTLE OF HYRULE ');
   console.log(spriteCastle);
-  const enter = readline.keyInYN('Do you want to enter in the castle ?');
+  const enter = readline.keyInYN('Would you like to enter the castle? ?');
   if (enter === true) {
     console.clear();
     start(lvl, tabfloors[choosefloors]);
@@ -103,7 +103,7 @@ export default function startGame() {
   const choosegame = readline.keyInSelect(['\x1b[4mNew Game\x1b[0m', '\x1b[4mQuit\x1b[0m']);
   if (choosegame === 0) {
     console.clear();
-    const difficulty = readline.keyInSelect(['\x1b[32mNormal\x1b[0m', '\x1b[33mDifficult\x1b[0m', '\x1b[31mInsane\x1b[0m'], 'Chosse you difficulty');
+    const difficulty = readline.keyInSelect(['\x1b[32mNormal\x1b[0m', '\x1b[33mDifficult\x1b[0m', '\x1b[31mInsane\x1b[0m'], 'Choose you difficulty');
     console.clear();
     if (difficulty === 0) {
       return (entry(1));
