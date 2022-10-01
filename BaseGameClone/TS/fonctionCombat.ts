@@ -170,6 +170,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
       console.log('You can\'t escape, fight.');
     }
     if (action === 3) {
+      console.clear();
       hero.hp -= enemy.str;
       Heart(hero);
       if (hero.hp <= 0) {
