@@ -164,7 +164,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
       }
       console.log(`\x1b[0;31m${enemy.name}\x1b[0m attacks you, \x1b[0;32myou\x1b[0m have \x1b[0;32m${Math.ceil(hero.hp)}\x1b[0m hp remaining.`);
     }
-    if (action === 5) {
+    if (action === 2) {
       console.clear();
       death = true;
       console.log('You can\'t escape, fight.');
