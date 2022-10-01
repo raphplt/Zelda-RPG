@@ -15,11 +15,12 @@ function start(lvl: number, choosefloors) {
   const user: Player = {
     xp: 0,
     level: 1,
-    gold: 0,
+    gold: 12,
     inventory: [],
   };
   playerHP = player.hp;
-  console.log(`Hello hero, you play ${player.name}`);
+  console.log(`~~~ Hello hero, you play \x1b[32m${player.name}\x1b[0m ~~~`);
+  console.log(`~~~ You have ${user.gold} 🪙  gold in your purse ~~~`);
   let i : number = 0;
   while (i < choosefloors.length) {
     i += 1;
@@ -27,14 +28,16 @@ function start(lvl: number, choosefloors) {
       || i === 60 || i === 70 || i === 80 || i === 90 || i === 100) {
       const next = readline.keyInYN('Do you want to fight the boss ?');
       if (next === false) {
-        console.log('No room for weakness here');
+        console.log('No r\x1b[31mom for weakness here\x1b[0m');
         return;
       }
       const boss = randomChar(tabBoss, lvl);
       console.log(`You have entered the path number ${i}`);
-      console.log('==================== BOSS FIGHT  ====================');
+      console.log('==================== \x1b[31mBOSS FIGHT\x1b[0m  ====================');
       combat(boss, player);
       if (death === false) {
+        user.gold += 1;
+        console.log(`You won 1 gold. You have ${user.gold} 🪙  gold in your purse`);
         console.log(spriteZelda);
         console.log('Congratulation ! You saved the princess Zelda !');
       }
@@ -50,6 +53,8 @@ function start(lvl: number, choosefloors) {
       }
       console.log(`\x1b[35mCongratulations, you beat the enemy from floor\x1b[0m \x1b[33m${i}\x1b[0m! \x1b[35mGet to the top floor\x1b[0m`);
       const xpadd = Math.floor(Math.random() * (50 - 15 + 1) + 15);
+      user.gold += 1;
+      console.log(`You won 1 gold. You have ${user.gold} 🪙  gold in your purse`);
       user.xp += Math.ceil(xpadd);
       console.log(`You earned ${xpadd} xp !\n`);
       if (user.xp >= 100) {
@@ -100,7 +105,7 @@ function entry(lvl: number) {
 
 export default function startGame() {
   console.clear();
-  const choosegame = readline.keyInSelect(['\x1b[4mNew Game\x1b[0m', '\x1b[4mQuit\x1b[0m']);
+  const choosegame = readline.keyInSelect(['\x1b[4mNew Game\x1b[0m', '\x1b[4mCharacter Creation\x1b[0m', '\x1b[4mQuit\x1b[0m']);
   if (choosegame === 0) {
     console.clear();
     const difficulty = readline.keyInSelect(['\x1b[32mNormal\x1b[0m', '\x1b[33mDifficult\x1b[0m', '\x1b[31mInsane\x1b[0m'], 'Choose you difficulty');
@@ -113,6 +118,16 @@ export default function startGame() {
     }
     if (difficulty === 2) {
       return (entry(2));
+    }
+  }
+  if (choosegame === 1) {
+    console.clear();
+    console.log('\x1b[31mYou do not have the required level for this\x1b[0m');
+    const back = readline.keyInYN('Back to home screen');
+    if (back === true) {
+      startGame();
+    } else {
+      return console.log('Goodbye');
     }
   }
   return console.log('Goodbye');

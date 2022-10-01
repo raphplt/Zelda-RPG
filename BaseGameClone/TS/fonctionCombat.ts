@@ -69,8 +69,8 @@ export function combat(enemy : CharStats, hero: CharStats) {
       dmgModifP *= 2;
     }
   }
-  let critP : string = '\x1b[33mNormal hit\x1b[0m';
-  let critE : string = '\x1b[33mNomal hit\x1b[0m';
+  let critP : string = '\x1b[34mNormal hit\x1b[0m';
+  let critE : string = '\x1b[34mNormal hit\x1b[0m';
   if (dmgModifE < 1) {
     critE = '\x1b[36mGlancing hit\x1b[0m';
   }
@@ -117,15 +117,15 @@ export function combat(enemy : CharStats, hero: CharStats) {
       console.clear();
       console.log(`\n[${critP}] \x1b[0;32mYou\x1b[0m inflicted \x1b[0;32m${Math.floor(hero.str)}\x1b[0m damage on the enemy.`);
       if (hero.str < enemyHp) {
-        enemyHp -= Math.round(hero.str * dmgModifP * criticalStrike + enemyDef);
+        enemyHp -= Math.ceil(hero.str * dmgModifP * criticalStrike + enemyDef);
       } else {
         enemyHp = 0;
       }
       console.log(`\x1b[0;31m${enemy.name}\x1b[0m has now \x1b[0;31m${Math.floor(enemyHp)}\x1b[0m hp.`);
       HeartH(enemyHp);
       if (enemyHp > 0) {
-        if (enemy.str < hero.hp) {
-          hero.hp -= Math.round(enemy.str * dmgModifE * criticalStrike + heroDef);
+        if (enemy.str * dmgModifE * criticalStrike + heroDef < hero.hp) {
+          hero.hp -= Math.ceil(enemy.str * dmgModifE * criticalStrike + heroDef);
         } else {
           hero.hp = 0;
         }
