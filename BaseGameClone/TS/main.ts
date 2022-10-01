@@ -88,19 +88,22 @@ function entry(lvl: number) {
   const tabfloors: string[] = ['\x1b[1m10\x1b[0m', '\x1b[1m20\x1b[0m', '\x1b[1m30\x1b[0m', '\x1b[1m40\x1b[0m', '\x1b[1m50\x1b[0m', '\x1b[1m60\x1b[0m', '\x1b[1m70\x1b[0m', '\x1b[1m80\x1b[0m', '\x1b[1m90\x1b[0m', '\x1b[1m100\x1b[0m'];
   const choosefloors = readline.keyInSelect(tabfloors, 'Choose the number of floors');
   console.log('Starting the game ...');
-  console.clear();
-  console.log('\n                          WELCOME TO THE CASTLE OF HYRULE ');
-  console.log(spriteCastle);
-  const user: Player = {
-    xp: 0,
-    level: 1,
-    gold: 12,
-    inventory: [],
-  };
-  const enter = readline.keyInYN('Would you like to enter the castle? ?');
-  if (enter === true) {
+  let enter: boolean = false;
+  while (!enter) {
     console.clear();
-    start(lvl, tabfloors[choosefloors], user);
+    console.log('\n                          WELCOME TO THE CASTLE OF HYRULE ');
+    console.log(spriteCastle);
+    const user: Player = {
+      xp: 0,
+      level: 1,
+      gold: 12,
+      inventory: [],
+    };
+    enter = readline.keyInYN('Would you like to enter the castle? ?');
+    if (enter === true) {
+      console.clear();
+      start(lvl, tabfloors[choosefloors], user);
+    }
   }
 }
 

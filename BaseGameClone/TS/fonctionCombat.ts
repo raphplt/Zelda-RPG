@@ -28,44 +28,44 @@ export function combat(enemy : CharStats, hero: CharStats) {
 // Addition of special hits according to class and race
   let dmgModifE : number = 1;
   let dmgModifP : number = 1;
-  for (let a : number = 0; a < parseClass[hero.class].weaknesses.length; a += 1) {
-    if (parseClass[hero.class].weaknesses[a] === enemy.id) {
+  for (let a : number = 0; a < parseClass[hero.class - 1].weaknesses.length; a += 1) {
+    if (parseClass[hero.class - 1].weaknesses[a] === enemy.id) {
       dmgModifP /= 2;
     }
   }
-  for (let a : number = 0; a < parseClass[enemy.class].weaknesses.length; a += 1) {
-    if (parseClass[enemy.class].weaknesses[a] === hero.id) {
+  for (let a : number = 0; a < parseClass[enemy.class - 1].weaknesses.length; a += 1) {
+    if (parseClass[enemy.class - 1].weaknesses[a] === hero.id) {
       dmgModifE /= 2;
     }
   }
-  for (let a : number = 0; a < parseRaces[hero.race].weaknesses.length; a += 1) {
-    if (parseRaces[hero.class].weaknesses[a] === enemy.id) {
+  for (let a : number = 0; a < parseRaces[hero.race - 1].weaknesses.length; a += 1) {
+    if (parseRaces[hero.class - 1].weaknesses[a] === enemy.id) {
       dmgModifP /= 2;
     }
   }
-  for (let a : number = 0; a < parseRaces[enemy.race].weaknesses.length; a += 1) {
-    if (parseRaces[enemy.class].weaknesses[a] === hero.id) {
+  for (let a : number = 0; a < parseRaces[enemy.race - 1].weaknesses.length; a += 1) {
+    if (parseRaces[enemy.class - 1].weaknesses[a] === hero.id) {
       dmgModifE /= 2;
     }
   }
 
-  for (let a : number = 0; a < parseClass[hero.class].strengths.length; a += 1) {
-    if (parseClass[hero.class].strengths[a] === enemy.id) {
+  for (let a : number = 0; a < parseClass[hero.class - 1].strengths.length; a += 1) {
+    if (parseClass[hero.class - 1].strengths[a] === enemy.id) {
       dmgModifE *= 2;
     }
   }
-  for (let a : number = 0; a < parseClass[enemy.class].strengths.length; a += 1) {
-    if (parseClass[enemy.class].strengths[a] === hero.id) {
+  for (let a : number = 0; a < parseClass[enemy.class - 1].strengths.length; a += 1) {
+    if (parseClass[enemy.class - 1].strengths[a] === hero.id) {
       dmgModifP *= 2;
     }
   }
-  for (let a : number = 0; a < parseRaces[hero.class].strengths.length; a += 1) {
-    if (parseRaces[hero.class].strengths[a] === enemy.id) {
+  for (let a : number = 0; a < parseRaces[hero.class - 1].strengths.length; a += 1) {
+    if (parseRaces[hero.class - 1].strengths[a] === enemy.id) {
       dmgModifE *= 2;
     }
   }
-  for (let a : number = 0; a < parseRaces[enemy.race].strengths.length; a += 1) {
-    if (parseRaces[enemy.class].strengths[a] === hero.id) {
+  for (let a : number = 0; a < parseRaces[enemy.race - 1].strengths.length; a += 1) {
+    if (parseRaces[enemy.class - 1].strengths[a] === hero.id) {
       dmgModifP *= 2;
     }
   }
