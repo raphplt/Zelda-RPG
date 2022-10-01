@@ -1,10 +1,10 @@
 import { readFileSync } from 'fs';
-import CharStats, { Classe } from './instances';
+import CharStats, { Classe, Race } from './instances';
 
 const content = readFileSync('../JSON/classes.json', 'utf-8');
 export const parseClass : Classe[] = JSON.parse(content);
 const content1 = readFileSync('../JSON/races.json', 'utf-8');
-export const parseRaces : Classe[] = JSON.parse(content1);
+export const parseRaces : Race[] = JSON.parse(content1);
 
 export function dispayChar(display: CharStats) {
   let displayClass : string = '';

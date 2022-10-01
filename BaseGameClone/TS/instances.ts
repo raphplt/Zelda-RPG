@@ -36,7 +36,5 @@ export interface Race {
   name: string,
   strengths: any[],
   weaknesses: any[],
-  attack_type: string,
-  alignment: string,
   rarity: number
 }
