@@ -15,7 +15,7 @@ function start(lvl: number, choosefloors, user) {
   const player = randomChar(tabPlayer, 1);
   playerHP = player.hp;
   console.log(`~~~ Hello hero, you play \x1b[32m${player.name}\x1b[0m ~~~`);
-  console.log(`~~~ You have ${user.gold} 🪙  gold in your purse ~~~`);
+  console.log(`~~~ You have \x1b[33m${user.gold}\x1b[0m 🪙  gold in your purse ~~~`);
   let i : number = 0;
   while (i < choosefloors.length) {
     i += 1;
@@ -32,7 +32,7 @@ function start(lvl: number, choosefloors, user) {
       combat(boss, player);
       if (death === false) {
         user.gold += 1;
-        console.log(`You won 1 gold. You have ${user.gold} 🪙  gold in your purse`);
+        console.log(`You won \x1b[33m1\x1b[0m gold. You have \x1b[33m${user.gold}\x1b[0m 🪙  gold in your purse`);
         console.log(spriteZelda);
         console.log('Congratulation ! You saved the princess Zelda !');
       }
@@ -49,7 +49,7 @@ function start(lvl: number, choosefloors, user) {
       console.log(`\x1b[35mCongratulations, you beat the enemy from floor\x1b[0m \x1b[33m${i}\x1b[0m! \x1b[35mGet to the top floor\x1b[0m`);
       const xpadd = Math.floor(Math.random() * (50 - 15 + 1) + 15);
       user.gold += 1;
-      console.log(`You won 1 gold. You have ${user.gold} 🪙  gold in your purse`);
+      console.log(`You won \x1b[33m1\x1b[0m gold. You have \x1b[33m${user.gold}\x1b[0m 🪙  gold in your purse`);
       user.xp += Math.ceil(xpadd);
       console.log(`You earned ${xpadd} xp !\n`);
       if (user.xp >= 100) {
