@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable import/no-mutable-exports */
 import { combat, death } from './fonctionCombat';
 import { spriteCastle, spriteZelda } from './sprites';
@@ -10,14 +11,8 @@ const readline = require('readline-sync');
 
 export let playerHP : number = 0;
 
-function start(lvl: number, choosefloors) {
+function start(lvl: number, choosefloors, user) {
   const player = randomChar(tabPlayer, 1);
-  const user: Player = {
-    xp: 0,
-    level: 1,
-    gold: 12,
-    inventory: [],
-  };
   playerHP = player.hp;
   console.log(`~~~ Hello hero, you play \x1b[32m${player.name}\x1b[0m ~~~`);
   console.log(`~~~ You have ${user.gold} 🪙  gold in your purse ~~~`);
@@ -96,10 +91,16 @@ function entry(lvl: number) {
   console.clear();
   console.log('\n                          WELCOME TO THE CASTLE OF HYRULE ');
   console.log(spriteCastle);
+  const user: Player = {
+    xp: 0,
+    level: 1,
+    gold: 12,
+    inventory: [],
+  };
   const enter = readline.keyInYN('Would you like to enter the castle? ?');
   if (enter === true) {
     console.clear();
-    start(lvl, tabfloors[choosefloors]);
+    start(lvl, tabfloors[choosefloors], user);
   }
 }
 

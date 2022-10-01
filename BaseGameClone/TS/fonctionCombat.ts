@@ -117,7 +117,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
       console.clear();
       console.log(`\n[${critP}] \x1b[0;32mYou\x1b[0m inflicted \x1b[0;32m${Math.floor(hero.str)}\x1b[0m damage on the enemy.`);
       if (hero.str < enemyHp) {
-        enemyHp -= Math.ceil(hero.str * dmgModifP * criticalStrike + enemyDef);
+        enemyHp -= Math.ceil(hero.str * dmgModifP * criticalStrike - enemyDef);
       } else {
         enemyHp = 0;
       }
@@ -125,7 +125,7 @@ export function combat(enemy : CharStats, hero: CharStats) {
       HeartH(enemyHp);
       if (enemyHp > 0) {
         if (enemy.str * dmgModifE * criticalStrike + heroDef < hero.hp) {
-          hero.hp -= Math.ceil(enemy.str * dmgModifE * criticalStrike + heroDef);
+          hero.hp -= Math.ceil(enemy.str * dmgModifE * criticalStrike - heroDef);
         } else {
           hero.hp = 0;
         }
